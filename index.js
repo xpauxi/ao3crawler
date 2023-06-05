@@ -4,11 +4,12 @@ const cheerio = require("cheerio");
 const express = require('express');
 const http = require('http'); 
 const { Telegraf } = require('telegraf');
-const bot = new Telegraf(process.env.botToken);
+const bot = undefined;
 
 function main() {
     const app = express();
     const router = express.Router();
+    bot = new Telegraf(process.env.botToken);
 
     router.use((req, res, next) => {
     res.header('Access-Control-Allow-Methods', 'GET');
