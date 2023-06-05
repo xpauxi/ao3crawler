@@ -38,8 +38,8 @@ function loop() {
         const hits = $('.hits').text();
         if(hits !== oldHits) {
             bot.telegram.sendMessage(process.env.chatId, hits);
+            oldHits = hits;
         }
-        oldHits = hits;
         loop();
     }, 300000); 
 }
