@@ -33,7 +33,6 @@ function loop() {
     setTimeout(async function () { 
         const pageHTML = await axios.get(env.process.crawlURL);
     
-        // initializing cheerio 
         const $ = cheerio.load(pageHTML.data);
 
         const hits = $('.hits').text();
@@ -41,7 +40,7 @@ function loop() {
             bot.telegram.sendMessage(process.env.chatId, hits);
         }
         oldHits = hits;
-        main();
+        loop();
     }, 300000); 
 }
 
