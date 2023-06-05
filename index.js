@@ -31,7 +31,7 @@ function main() {
 
 function loop() {
     setTimeout(async function () { 
-        const pageHTML = await axios.get(env.process.crawlURL);
+        const pageHTML = await axios.get(process.env.crawlURL);
     
         const $ = cheerio.load(pageHTML.data);
 
@@ -41,7 +41,7 @@ function loop() {
         }
         oldHits = hits;
         loop();
-    }, 300000); 
+    }, 100000); 
 }
 
 main()
