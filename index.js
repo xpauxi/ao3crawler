@@ -4,7 +4,7 @@ const cheerio = require("cheerio");
 const express = require('express');
 const http = require('http'); 
 const { Telegraf } = require('telegraf');
-const bot = new Telegraf("6021726217:AAEy_GeNEmooaTSbuvBqqfycL_X6nHl0NmY");
+const bot = new Telegraf(process.env.botToken);
 
 function main() {
     const app = express();
@@ -24,20 +24,20 @@ function main() {
     const server = http.createServer(app);
     server.listen(3000);
     console.log("started");
-    
+
     loop();
 }
 
 function loop() {
     setTimeout(async function () { 
-        const pageHTML = await axios.get("https://archiveofourown.org/works/46847716/chapters/119871850");
+        const pageHTML = await axios.get(env.process.crawlURL);
     
         // initializing cheerio 
         const $ = cheerio.load(pageHTML.data);
 
         const hits = $('.hits').text();
         if(hits !== oldHits) {
-            bot.telegram.sendMessage(459165464, hits);
+            bot.telegram.sendMessage(process.env.chatId, hits);
         }
         oldHits = hits;
         main();
