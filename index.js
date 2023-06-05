@@ -41,7 +41,7 @@ function loop() {
         }
         oldHits = hits;
         loop();
-    }, 100000); 
+    }, 300000); 
 }
 
 main()
