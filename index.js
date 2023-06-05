@@ -4,7 +4,7 @@ const cheerio = require("cheerio");
 const express = require('express');
 const http = require('http'); 
 const { Telegraf } = require('telegraf');
-const bot = undefined;
+var bot = undefined;
 
 function main() {
     const app = express();
